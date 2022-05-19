@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd8744e10a1cd04ebbda54f143ebf58, type: 3}
+  m_Name: Tile_Flat_r270
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 4493585093827132993, guid: d41e6a6c745aadd49aa8fd4237634d79, type: 3}
+  euler_rotation: {x: 270, y: 270, z: 0}
+  materials:
+  - {fileID: 2100000, guid: 28254f600b3339f4e9e6cc500ce985b9, type: 2}
+  - {fileID: 2100000, guid: 0bfb4a65a5f56fd4689b964fc0e6b571, type: 2}
+  access:
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - 1
+  - -1
+  - 1
+  - -1
+  - 1
+  - -1
+  - 1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1

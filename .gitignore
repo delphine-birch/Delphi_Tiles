@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+/Delphi_Base/[Ll]ibrary/
+/Delphi_Base/[Tt]emp/
+/Delphi_Base/[Oo]bj/
+/Delphi_Base/[Bb]uild/
+/Delphi_Base/[Bb]uilds/
+/Delphi_Base/[Ll]ogs/
+/Delphi_Base/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
