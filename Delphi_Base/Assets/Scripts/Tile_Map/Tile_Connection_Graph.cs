@@ -61,7 +61,7 @@ public class Tile_Connection_Graph
                     if (!open.Contains(tc.coords)) { open.Add(tc.coords)); }
                 }
             }
-            return new List<Vector3Int>();
         }
-               
+        return new List<Vector3Int>();
+    }          
 }
