@@ -54,9 +54,8 @@ public class Tile_Template_Editor : MonoBehaviour {
     }
 
     public void Save_Tile() {
-        string path = "Assets/Tiles/" + filename + ".asset";
-        AssetDatabase.CreateAsset(tile, path);
-        tile = (Tile_Template)AssetDatabase.LoadAssetAtPath(path, typeof(Tile_Template));
+        File_Manager.Save_Tile(tile, filename);
+        tile = File_Manager.Load_Tile(filename);
     }
 
     public void Update_Access() {
@@ -78,9 +77,9 @@ public class Tile_Template_Editor : MonoBehaviour {
         string p1 = "Assets/Tiles/" + filename + "_r90" + ".asset";
         string p2 = "Assets/Tiles/" + filename + "_r180" + ".asset";
         string p3 = "Assets/Tiles/" + filename + "_r270" + ".asset";
-        AssetDatabase.CreateAsset(t1, p1);
-        AssetDatabase.CreateAsset(t2, p2);
-        AssetDatabase.CreateAsset(t3, p3);
+        File_Manager.Save_Tile(t1, filename + "_r90");
+        File_Manager.Save_Tile(t2, filename + "_r180");
+        File_Manager.Save_Tile(t3, filename + "_r270");
     }
 
 }
