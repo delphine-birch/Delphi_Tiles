@@ -5,19 +5,12 @@ using UnityEngine;
 public class Map_Manager : MonoBehaviour
 {
     public Tile_Map tile_map;
-    public Vector3Int dim;
-    public List<Tile_Template> tiles;
+    public Tile_Set tile_set;
     public Dictionary<Vector3Int, Tile_Renderer> renderers;
-    void Awake()
-    {
-        tile_map = new Tile_Map(dim.x, dim.y, dim.z, new Tile_Set(tiles));
-        Generate_Renderers(new Vector3(0, 0, 0), new Vector3(1, 1, 1));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+    
+    public void Initialise(Tile_Map_Data tmd) { 
+        tile_map = new Tile_Map(tmd);
+        tile_set = tmd.tile_set;
     }
 
     public void Generate_Renderers(Vector3 origin, Vector3 scale) {
