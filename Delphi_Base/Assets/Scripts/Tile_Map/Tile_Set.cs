@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-#0: Default Flat
-#1: Default Edge
-#2: Default Corner
-#3: Default Corridor
-#4: Default End
-#5: Default Full
-#6: Default Wall
-#7: Default Door
-#8: Default Stair
-#9: Default Ladder
+//0: Default Flat
+//1: Default Edge
+//2: Default Corner
+//3: Default Corridor
+//4: Default End
+//5: Default Full
+//6: Default Wall
+//7: Default Door
+//8: Default Stair
+//9: Default Ladder
 
 [System.Serializable]
 public class Tile_Set : ScriptableObject
