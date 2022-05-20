@@ -15,10 +15,11 @@ public class Tile_Map
 
     public Tile_Map(Tile_Map_Data tmd) {
         dim = tmd.dim;
-        map = tmd.map;
+        map = Construct_Dimensions(tmd.map, tmd.dim);
         tiles = tmd.tiles;
         default_tile = tmd.default_tile;
-        special_connections = tmd.special_connections;
+        special_connections = new Tile_Connection_Graph(tmd.special_connections);
+        Graph_Gen();
     }
 
     public Tile_Map(int x, int y, int z, Tile_Set t) {
@@ -27,6 +28,7 @@ public class Tile_Map
         tiles = t;
         special_connections = new Tile_Connection_Graph();
         Clear_Map();
+        Graph_Gen();
     }
 
     public Tile_Map() {
@@ -35,6 +37,7 @@ public class Tile_Map
         tiles = new Tile_Set();
         special_connections = new Tile_Connection_Graph();
         Clear_Map();
+        Graph_Gen();
     }
 
     public List<Tile_Instance_Data> Get_Instance_Data(Vector3 origin, float scale) {
@@ -70,7 +73,31 @@ public class Tile_Map
             }
         }
     }
-
+    
+    int[] Deconstruct_Dimensions(int[,,] m, Vector3Int d) {
+        int[] ret = new int[d.x*d.y*d.z];
+        for (int i = 0; i < d.x; i++) {
+            for (int j = 0; j < d.y; j++) {
+                for (int k = 0; k < d.z; k++) {
+                    ret[i + d.x*(j + d.y*k)] = m[i, j, k];
+                }
+            }
+        }
+        return ret;
+    }
+    
+    int[,,] Construct_Dimensions(int[] m, Vector3Int d) {
+        int[,,] ret = new int[d.x, d.y, d.z];
+        for (int i = 0; i < d.x; i++) {
+            for (int j = 0; j < d.y; j++) {
+                for (int k = 0; k < d.z; k++) {
+                    ret[i, j, k] = m[i + d.x*(j + d.y*k)];
+                }
+            }
+        }
+        return ret;
+    }
+    
     public void Set_Tile_Set(Tile_Set ts) { tiles = ts; }
 
     public Tile_Template Get_Tile(Vector3Int v) {
@@ -154,7 +181,9 @@ public class Tile_Map
             }
         }
     }
-
+    public Tile_Map_Data Save_Data() {
+        return new Tile_Map_Data(dim, Deconstruct_Dimensions(map, dim), tiles, default_tile, special_connections);
+    }
 }
 
 [System.Serializable]
@@ -168,16 +197,16 @@ public struct Tile_Connection
 public class Tile_Map_Data
 {
     public Vector3Int dim;
-    public int[,,] map;
+    public int[] map;
     public Tile_Set tiles;
-    public Tile_Connection_Graph special_connections;
+    public Tile_Connection_Save special_connections;
     public int default_tile;
-    public Tile_Map_Data(Vector3Int d, int[,,] m, Tile_Set t, int dt, Tile_Connection_Graph sc) {
+    public Tile_Map_Data(Vector3Int d, int[] m, Tile_Set t, int dt, Tile_Connection_Graph sc) {
         dim = d;
         map = m;
         tiles = t;
         default_tile = dt;
-        special_connections = sc;
+        special_connections = sc.Save();
     }
 }
 
