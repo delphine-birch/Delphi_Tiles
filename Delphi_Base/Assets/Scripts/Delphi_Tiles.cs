@@ -6,7 +6,7 @@ using UnityEditor;
 public class Delphi_Tiles : MonoBehaviour {
   public Map_Manager map;
   public Entity_Manager entities;
-  public Render_Manager renderer;
+  public Render_Manager render;
   
   public Tile_Map_Data map_data;
   public Initial_Entity_Data entity_data;
@@ -14,6 +14,6 @@ public class Delphi_Tiles : MonoBehaviour {
   void Awake() {
     map.Initialise(map_data);
     entities.Initialise(entity_data);
-    renderer.Initialise(this);
+    render.Initialise(this);
   }
 }

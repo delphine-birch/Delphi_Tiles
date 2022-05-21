@@ -15,7 +15,7 @@ using UnityEditor;
 //9: Default Ladder
 
 [System.Serializable]
-public class Tile_Set : ScriptableObject
+public class Tile_Set
 {
     public Dictionary<int, Tile_Template> tiles;
     public Tile_Set() { tiles = new Dictionary<int, Tile_Template>(); }
@@ -28,7 +28,7 @@ public class Tile_Set : ScriptableObject
     public Tile_Set(List<Tile_Set_Struct> t) {
         tiles = new Dictionary<int, Tile_Template>();
         foreach (Tile_Set_Struct tss in t) {
-            tiles[t.i] = t.tt;
+            tiles[tss.i] = tss.tt;
         }
     }
     public Tile_Template Get_Tile(int n) { return tiles[n]; }
@@ -37,7 +37,7 @@ public class Tile_Set : ScriptableObject
         foreach (KeyValuePair<int, Tile_Template> kv in tiles) {
             tiles0.Add(new Tile_Set_Struct { tt = kv.Value, i = kv.Key });
         }
-        File_Manager.Save(tiles0, s, "Tile_Set");
+        File_Manager.Save_Tile_Set(new Tile_Set_Save(tiles0), s);
     }
 }
 
@@ -45,4 +45,9 @@ public class Tile_Set : ScriptableObject
 public struct Tile_Set_Struct {
     public Tile_Template tt;
     public int i;
+}
+
+public class Tile_Set_Save : ScriptableObject {
+    public List<Tile_Set_Struct> tiles;
+    public Tile_Set_Save(List<Tile_Set_Struct> tss) { tiles = tss; }
 }

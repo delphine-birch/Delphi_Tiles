@@ -7,7 +7,7 @@ public class Entity_Manager : MonoBehaviour
     public List<DT_Entity> entities;
     
     public void Initialise(Initial_Entity_Data data) {
-      entities = dt.entities;
+      entities = data.entities;
     }
 }
 

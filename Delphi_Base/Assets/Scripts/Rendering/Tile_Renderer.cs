@@ -20,6 +20,7 @@ public class Tile_Renderer : MonoBehaviour
 
     public void Render(Tile_Template t, Vector3 p, Vector3 s)
     {
+        OnEnable();
         tile = t;
         pos = p;
         scale = s;

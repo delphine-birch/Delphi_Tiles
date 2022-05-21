@@ -8,8 +8,23 @@ public class Tile_Connection_Graph
     public Dictionary<Vector3Int, List<Tile_Connection>> connections;
     public Tile_Connection_Graph() { connections = new Dictionary<Vector3Int, List<Tile_Connection>>(); }
     public Tile_Connection_Graph(Dictionary<Vector3Int, List<Tile_Connection>> c) { connections = c; }
+    public Tile_Connection_Graph(List<Tile_Connection_Save> s) {
+        Clear();
+        foreach (Tile_Connection_Save tcs in s) {
+            Add_Connection(tcs.a, new Tile_Connection { coords = tcs.b, weight = tcs.weight });
+        }
+    }
     public void Clear() { connections = new Dictionary<Vector3Int, List<Tile_Connection>>(); }
     public void Initialise(Vector3Int v) { connections[v] = new List<Tile_Connection>(); }
+    public List<Tile_Connection_Save> Save() {
+        List<Tile_Connection_Save> save = new List<Tile_Connection_Save>();
+        foreach (KeyValuePair<Vector3Int, List<Tile_Connection>> kv in connections) {
+            foreach (Tile_Connection tc in kv.Value) {
+                save.Add(new Tile_Connection_Save { a = kv.Key, b = tc.coords, weight = tc.weight });
+            }
+        }
+        return save;
+    }
     public void Add_Connection(Vector3Int v, Tile_Connection tc) { if (!connections.ContainsKey(v)) { Initialise(v); } connections[v].Add(tc); }
     public List<Tile_Connection> Get_Connections(Vector3Int v) { if (connections.ContainsKey(v)) { 
         return connections[v]; 
@@ -48,20 +63,27 @@ public class Tile_Connection_Graph
         int iter = 0;
         while (open.Count != 0 && iter < max_iter) {
             iter++;
-            Vector3Int current = min(open, fscore);
-            if (V3I_Equals(current, b)) { return Construct_Path(came_from, current); }
+            Vector3Int current = min(open, f_score);
+            if (Util.V3I_Equals(current, b)) { return Construct_Path(came_from, current); }
             open.Remove(current);
             List<Tile_Connection> connections = Get_Connections(current);
             foreach (Tile_Connection tc in connections) {
-                float tgscore = gscore[current] = tc.weight;
-                if (tgscore < gscore[tc.coords]) {
+                float tgscore = g_score[current] = tc.weight;
+                if (tgscore < g_score[tc.coords]) {
                     came_from[tc.coords] = current;
-                    gscore[tc.coords] = tgscore;
-                    fscore[tc.coords] = tgscore + (b - tc.coords).magnitude;
-                    if (!open.Contains(tc.coords)) { open.Add(tc.coords)); }
+                    g_score[tc.coords] = tgscore;
+                    f_score[tc.coords] = tgscore + (b - tc.coords).magnitude;
+                    if (!open.Contains(tc.coords)) { open.Add(tc.coords); }
                 }
             }
         }
         return new List<Vector3Int>();
     }          
+}
+
+public struct Tile_Connection_Save
+{
+    public Vector3Int a;
+    public Vector3Int b;
+    public float weight;
 }

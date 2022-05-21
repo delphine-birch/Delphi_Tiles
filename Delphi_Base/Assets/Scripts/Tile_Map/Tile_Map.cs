@@ -199,7 +199,7 @@ public class Tile_Map_Data
     public Vector3Int dim;
     public int[] map;
     public Tile_Set tiles;
-    public Tile_Connection_Save special_connections;
+    public List<Tile_Connection_Save> special_connections;
     public int default_tile;
     public Tile_Map_Data(Vector3Int d, int[] m, Tile_Set t, int dt, Tile_Connection_Graph sc) {
         dim = d;

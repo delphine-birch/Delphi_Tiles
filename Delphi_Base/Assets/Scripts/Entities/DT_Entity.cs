@@ -6,7 +6,7 @@ public class DT_Entity
 {
     public int ID;
     public string entity_name;
-    public Entity_Renderer renderer;
+    public Entity_Renderer render;
     public Vector3 pos;
     public Vector3Int cell_pos;
     public bool lock_to_cell;
@@ -16,7 +16,7 @@ public class DT_Entity
         ID = i;
         entity_name = n;
         pos = p;
-        cell_pos = dt.World_To_Cell_Pos(p);
+        cell_pos = dt.map.World_To_Cell_Pos(p);
         lock_to_cell = true;
         task_queue = new List<Entity_Task>();
     }
