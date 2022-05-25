@@ -108,6 +108,10 @@ public class Tile_Map
         return tiles.Get_Tile(i);
     }
 
+    public bool Tile_Open(Vector3Int v) {
+        return Get_Tile(v).open;
+    }
+
     void Set_Tile(Vector3Int v, int t) {
         try { map[v.x, v.y, v.z] = t; }
         catch (System.IndexOutOfRangeException ex) { Debug.Log("COORDINATE ERROR: Trying to set tile outside of map range.\n" + ex.Message); }

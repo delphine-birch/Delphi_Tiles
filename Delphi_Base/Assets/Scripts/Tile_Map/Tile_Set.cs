@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-//0 Default Floor
-//1 Default Wall
+//0 Empty
+//1 Default Floor
 //2 Default Corridor NS
 //3 Default Corridor EW
 //4, 5, 6, 7 Default Corner NESW (Sides on North and West)
@@ -18,7 +18,7 @@ public class Tile_Set : ScriptableObject
     public Dictionary<int, Tile_Template> tiles;
     public List<Tile_Template> tiles_list;
     public Tile_Set() { tiles = new Dictionary<int, Tile_Template>(); }
-    public Tile_Set(List<Tile_Template> t, Tile_Template e) {
+    public Tile_Set(List<Tile_Template> t) {
         tiles = new Dictionary<int, Tile_Template>();
         int count = 0;
         foreach (Tile_Template tt in t) { tiles[count] = tt; count++; }
