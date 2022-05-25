@@ -68,12 +68,14 @@ public class Tile_Connection_Graph
             open.Remove(current);
             List<Tile_Connection> connections = Get_Connections(current);
             foreach (Tile_Connection tc in connections) {
-                float tgscore = g_score[current] = tc.weight;
-                if (tgscore < g_score[tc.coords]) {
-                    came_from[tc.coords] = current;
-                    g_score[tc.coords] = tgscore;
-                    f_score[tc.coords] = tgscore + (b - tc.coords).magnitude;
-                    if (!open.Contains(tc.coords)) { open.Add(tc.coords); }
+                if (!connections.ContainsKey(tc.coords + Vector3Int(0, 1, 0))) {
+                    float tgscore = g_score[current] = tc.weight;
+                    if (tgscore < g_score[tc.coords]) {
+                        came_from[tc.coords] = current;
+                        g_score[tc.coords] = tgscore;
+                        f_score[tc.coords] = tgscore + (b - tc.coords).magnitude;
+                        if (!open.Contains(tc.coords)) { open.Add(tc.coords); }
+                    }
                 }
             }
         }

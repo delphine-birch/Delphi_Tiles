@@ -20,6 +20,19 @@ public class DT_Entity
         lock_to_cell = true;
         task_queue = new List<Entity_Task>();
     }
+
+    public DT_Entity(DT_Entity_Save dtes, Delphi_Tiles dt) {
+        ID = dtes.ID;
+        entity_name = dtes.name;
+        pos = new Vector3(dtes.x, dtes.y, dtes.z);
+        cell_pos = dt.map.World_To_Cell_Pos(p);
+        lock_to_cell = true;
+        task_queue = new List<Entity_Task>();
+    }
+
+    public DT_Entity_Save Save() {
+        return new DT_Entity_Save { ID = ID, name = entity_name, x = pos.x, y = pos.y, z = pos.z };
+    }
 }
 
 public class Entity_Task
@@ -27,6 +40,15 @@ public class Entity_Task
     public Vector3Int target;
     public int type; // 0 = Move
     public int tick_length;
+}
+
+public struct DT_Entity_Save
+{
+    int ID;
+    string name;
+    float x;
+    float y;
+    float z;
 }
     
     
