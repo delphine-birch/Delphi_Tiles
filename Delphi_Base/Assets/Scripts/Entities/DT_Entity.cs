@@ -25,7 +25,7 @@ public class DT_Entity
         ID = dtes.ID;
         entity_name = dtes.name;
         pos = new Vector3(dtes.x, dtes.y, dtes.z);
-        cell_pos = dt.map.World_To_Cell_Pos(p);
+        cell_pos = dt.map.World_To_Cell_Pos(pos);
         lock_to_cell = true;
         task_queue = new List<Entity_Task>();
     }
@@ -44,11 +44,11 @@ public class Entity_Task
 
 public struct DT_Entity_Save
 {
-    int ID;
-    string name;
-    float x;
-    float y;
-    float z;
+    public int ID;
+    public string name;
+    public float x;
+    public float y;
+    public float z;
 }
     
     

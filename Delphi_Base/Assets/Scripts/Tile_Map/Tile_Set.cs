@@ -22,7 +22,6 @@ public class Tile_Set : ScriptableObject
         tiles = new Dictionary<int, Tile_Template>();
         int count = 0;
         foreach (Tile_Template tt in t) { tiles[count] = tt; count++; }
-        tiles[-1] = e;
         Update_List();
     }
     public Tile_Set(List<Tile_Set_Struct> t) {

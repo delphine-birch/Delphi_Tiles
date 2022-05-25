@@ -108,7 +108,7 @@ public class Tile_Map
         return tiles.Get_Tile(i);
     }
 
-    public bool Tile_Open(Vector3Int v) {
+    public bool Is_Open(Vector3Int v) {
         return Get_Tile(v).open;
     }
 

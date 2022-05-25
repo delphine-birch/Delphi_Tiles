@@ -15,9 +15,9 @@ public class Entity_Manager : MonoBehaviour
     }
 
     public List<Vector3Int> Get_Obstructed() {
-      List<Vector3Int> ret;
+      List<Vector3Int> ret = new List<Vector3Int>();
       foreach (DT_Entity e in entities) { ret.Add(e.cell_pos); }
-      foreach (DT_Object o in objects) { if (o.obstructive) { ret.Add(Util.V3_to_V3I(o.pos); } }
+      foreach (DT_Object o in objects) { if (o.obstructive) { ret.Add(Util.V3_to_V3I(o.map_position)); } }
       return ret;
     }
 }

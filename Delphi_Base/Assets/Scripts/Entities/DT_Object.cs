@@ -30,10 +30,10 @@ public class DT_Object {
         return new DT_Object_Save { ID = ID, type = type, x = map_position.x, y = map_position.y, z = map_position.z, o = obstructive };
     }
 
-    public void Object_Update() {
+    public void Object_Update(Map_Manager map) {
         if (lock_to_cell) { map_position = Util.V3_Round(map_position); }
         object_renderer.map_location = map_position;
-        object_renderer.Render();
+        object_renderer.Render(map);
     }
 
     public void Set_Pos(Vector3 v) {
@@ -43,7 +43,7 @@ public class DT_Object {
         object_renderer.scale = s;
     }
     public void Set_Rotation(Vector3 v) {
-        object_renderer.rotation = v;
+        object_renderer.euler_rotation = v;
     }
     public void Set_Obstructive(bool b) {
         obstructive = b;

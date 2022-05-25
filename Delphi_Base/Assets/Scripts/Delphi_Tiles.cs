@@ -13,7 +13,7 @@ public class Delphi_Tiles : MonoBehaviour {
   
   void Awake() {
     map.Initialise(map_data);
-    entities.Initialise(entity_data);
+    entities.Initialise(entity_data, this);
     render.Initialise(this);
   }
 }

@@ -13,7 +13,7 @@ public class Tile_Template : ScriptableObject
     public Material[] materials;
     [SerializeField]
     public float[] access;
-    bool open;
+    public bool open;
 
     public Tile_Template(Mesh m, Vector3 rot, Material[] mat, float[] a) {
         mesh = m;
