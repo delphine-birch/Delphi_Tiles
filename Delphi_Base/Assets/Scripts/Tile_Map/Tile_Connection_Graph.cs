@@ -51,7 +51,7 @@ public class Tile_Connection_Graph
         }
         return path;
     }
-    public List<Vector3Int> Get_Path(Vector3Int a, Vector3Int b, int max_iter=1000) {
+    public List<Vector3Int> Get_Path(Vector3Int a, Vector3Int b, int max_iter=1000, Entity_Manager em) {
         List<Vector3Int> open = new List<Vector3Int>();
         open.Add(a);
         Dictionary<Vector3Int, Vector3Int> came_from = new Dictionary<Vector3Int, Vector3Int>();
@@ -61,6 +61,7 @@ public class Tile_Connection_Graph
         f_score[a] = (b - a).magnitude;
         
         int iter = 0;
+        List<Vector3Int> obstructed = em.Get_Obstructed();
         while (open.Count != 0 && iter < max_iter) {
             iter++;
             Vector3Int current = min(open, f_score);
@@ -68,7 +69,8 @@ public class Tile_Connection_Graph
             open.Remove(current);
             List<Tile_Connection> connections = Get_Connections(current);
             foreach (Tile_Connection tc in connections) {
-                if (!connections.ContainsKey(tc.coords + Vector3Int(0, 1, 0))) {
+                Vector3Int p = tc.coords + new Vector3Int(0, 1, 0);
+                if (!connections.ContainsKey(p) && !obstructed.Contains(p)) {
                     float tgscore = g_score[current] = tc.weight;
                     if (tgscore < g_score[tc.coords]) {
                         came_from[tc.coords] = current;
