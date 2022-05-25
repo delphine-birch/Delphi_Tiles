@@ -19,4 +19,12 @@ public class Map_Manager : MonoBehaviour
         Vector3 n = ((p + origin)*scale);
         return new Vector3Int(Mathf.RoundToInt(n.x), Mathf.RoundToInt(n.y) - 1, Mathf.RoundToInt(n.z));
     }
+
+    public Vector3 Map_To_World_Pos(Vector3 p) {
+        return (p/scale) - origin;
+    }
+
+    public Vector3 Cell_To_World_Pos(Vector3Int p) {
+        return Map_To_World_Pos(new Vector3(p.x, p.y, p.z));
+    }
 }
