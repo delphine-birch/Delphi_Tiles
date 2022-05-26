@@ -20,7 +20,7 @@ public class Tile_Set_Unity_Editor : Editor
             editor.tileset.Save(editor.filename);
         }
         if (GUILayout.Button("Load Tile Set") && editor.save != null) {
-            editor.tileset = new Tile_Set(editor.save.tiles);
+            editor.tileset = new Tile_Set(editor.save);
             editor.On_Settings_Update();
         }
     }

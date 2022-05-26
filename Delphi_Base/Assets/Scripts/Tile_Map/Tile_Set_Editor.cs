@@ -22,14 +22,14 @@ public class Tile_Set_Editor : MonoBehaviour
         int x = 0;
         int y = 0;
         foreach (Tile_Template tt in tileset.tiles_list) {
-            x++;
-            if (x > 8) { x = 0; y++; }
             GameObject go = new GameObject("Tile_Renderer");
             go.transform.parent = transform;
             go.AddComponent(typeof(MeshFilter));
             go.AddComponent(typeof(MeshRenderer));
             Tile_Renderer r = go.AddComponent(typeof(Tile_Renderer)) as Tile_Renderer;
             r.Render(tt, origin + new Vector3(x, 0, y)*scale, new Vector3(scale, scale, scale)*100);
+            x++;
+            if (x > 7) { x = 0; y++; }
         }
         tileset.Update_Dict();
     }
