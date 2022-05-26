@@ -14,9 +14,9 @@ public class Tile_Map
     Tile_Connection_Graph special_connections;
 
     public Tile_Map(Tile_Map_Data tmd) {
-        dim = tmd.dim;
-        map = Construct_Dimensions(tmd.map, tmd.dim);
-        tiles = tmd.tiles;
+        dim = new Vector3Int(tmd.dimx, tmd.dimy, tmd.dimz);
+        map = Construct_Dimensions(tmd.map, dim);
+        tiles = new Tile_Set(tmd.tiles.tiles);
         default_tile = tmd.default_tile;
         special_connections = new Tile_Connection_Graph(tmd.special_connections);
         Graph_Gen();
@@ -200,12 +200,14 @@ public struct Tile_Connection
 [System.Serializable]
 public class Tile_Map_Data
 {
-    public Vector3Int dim;
+    public int dimx;
+    public int dimy;
+    public int dimz;
     public int[] map;
-    public Tile_Set tiles;
+    public Tile_Set_Save tiles;
     public List<Tile_Connection_Save> special_connections;
     public int default_tile;
-    public Tile_Map_Data(Vector3Int d, int[] m, Tile_Set t, int dt, Tile_Connection_Graph sc) {
+    public Tile_Map_Data(Vector3Int d, int[] m, Tile_Set_Save t, int dt, Tile_Connection_Graph sc) {
         dim = d;
         map = m;
         tiles = t;

@@ -11,7 +11,7 @@ public class Tile_Connection_Graph
     public Tile_Connection_Graph(List<Tile_Connection_Save> s) {
         Clear();
         foreach (Tile_Connection_Save tcs in s) {
-            Add_Connection(tcs.a, new Tile_Connection { coords = tcs.b, weight = tcs.weight });
+            Add_Connection(new Vector3Int(tcs.ax, tcs.ay, tcs.az), new Tile_Connection { coords = new Vector3Int(tcs.bx, tcs.by, tcs.bz), weight = tcs.weight });
         }
     }
     public void Clear() { connections = new Dictionary<Vector3Int, List<Tile_Connection>>(); }
@@ -20,7 +20,7 @@ public class Tile_Connection_Graph
         List<Tile_Connection_Save> save = new List<Tile_Connection_Save>();
         foreach (KeyValuePair<Vector3Int, List<Tile_Connection>> kv in connections) {
             foreach (Tile_Connection tc in kv.Value) {
-                save.Add(new Tile_Connection_Save { a = kv.Key, b = tc.coords, weight = tc.weight });
+                save.Add(new Tile_Connection_Save { ax = kv.Key.x, ay = kv.Key.y, az = kv.Key.z , bx = tc.coords.x, by = tc.coords.y, bz = tc.coords.z, weight = tc.weight });
             }
         }
         return save;
@@ -87,7 +87,11 @@ public class Tile_Connection_Graph
 
 public struct Tile_Connection_Save
 {
-    public Vector3Int a;
-    public Vector3Int b;
+    public int ax;
+    public int ay;
+    public int az;
+    public int bx;
+    public int by;
+    public int bz;
     public float weight;
 }
