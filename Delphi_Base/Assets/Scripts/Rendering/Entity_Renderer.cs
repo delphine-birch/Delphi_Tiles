@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Entity_Renderer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Vector3Int cell_pos;
+    public Vector3Int target;
+    public bool moving;
+    
 }
