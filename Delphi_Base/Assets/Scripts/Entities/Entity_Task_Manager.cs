@@ -12,17 +12,21 @@ public class Entity_Task_Manager : MonoBehaviour {
         completers = Default_Task_Handler.Get_Completers();
     }
 
-    public void Tick_Start(DT_Entity e, Delphi_Tiles dt) {
-        if (e.task_queue.Count < 1) { return; }
-        Entity_Task current = e.task_queue[0];
-        if (!current.started) { starters[current.type](e, current, dt); current.started = true; }
+    public void Tick_Start(List<DT_Entity> el, Delphi_Tiles dt) {
+        foreach (DT_Entity e in el) {
+            if (e.task_queue.Count < 1) { continue; }
+            Entity_Task current = e.task_queue[0];
+            if (!current.started) { starters[current.type](e, current, dt); current.started = true; }
+        }
     }
 
-    public void Tick_End(DT_Entity e, Delphi_Tiles dt) {
-        if (e.task_queue.Count < 1) { return; }
-        Entity_Task current = e.task_queue[0];
-        current.tick_length--;
-        if (current.tick_length <= 0) { completers[current.type](e, current, dt); e.task_queue.RemoveAt(0); }
+    public void Tick_End(List<DT_Entity> el, Delphi_Tiles dt) {
+        foreach (DT_Entity e in el) {
+            if (e.task_queue.Count < 1) { continue; }
+            Entity_Task current = e.task_queue[0];
+            current.tick_length--;
+            if (current.tick_length <= 0) { completers[current.type](e, current, dt); e.task_queue.RemoveAt(0); }
+        }
     }
 
 } 
