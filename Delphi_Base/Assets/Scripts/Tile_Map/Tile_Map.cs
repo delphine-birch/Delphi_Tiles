@@ -8,7 +8,7 @@ public class Tile_Map
 {
     public Vector3Int dim;
     int[,,] map;
-    Tile_Set tiles;
+    public Tile_Set tiles;
     Tile_Connection_Graph graph;
     int default_tile = 0;
     Tile_Connection_Graph special_connections;
@@ -16,7 +16,7 @@ public class Tile_Map
     public Tile_Map(Tile_Map_Data tmd) {
         dim = new Vector3Int(tmd.dimx, tmd.dimy, tmd.dimz);
         map = Construct_Dimensions(tmd.map, dim);
-        tiles = new Tile_Set(tmd.tiles.tiles);
+        tiles = new Tile_Set(tmd.tiles);
         default_tile = tmd.default_tile;
         special_connections = new Tile_Connection_Graph(tmd.special_connections);
         Graph_Gen();
@@ -186,7 +186,7 @@ public class Tile_Map
         }
     }
     public Tile_Map_Data Save_Data() {
-        return new Tile_Map_Data(dim, Deconstruct_Dimensions(map, dim), tiles, default_tile, special_connections);
+        return new Tile_Map_Data(dim, Deconstruct_Dimensions(map, dim), tiles.save, default_tile, special_connections);
     }
 }
 
@@ -208,7 +208,9 @@ public class Tile_Map_Data
     public List<Tile_Connection_Save> special_connections;
     public int default_tile;
     public Tile_Map_Data(Vector3Int d, int[] m, Tile_Set_Save t, int dt, Tile_Connection_Graph sc) {
-        dim = d;
+        dimx = d.x;
+        dimy = d.y;
+        dimz = d.z;
         map = m;
         tiles = t;
         default_tile = dt;

@@ -11,7 +11,6 @@ public class Tile_Renderer : MonoBehaviour
     public Vector3 scale;
     MeshFilter mf;
     MeshRenderer mr;
-    bool rendered = false;
     void OnEnable()
     {
         mf = GetComponent<MeshFilter>();
@@ -29,7 +28,6 @@ public class Tile_Renderer : MonoBehaviour
         transform.position = pos;
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(tile.euler_rotation);
-        rendered = true;
     }
 
 }

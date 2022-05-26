@@ -17,6 +17,7 @@ public class Tile_Set : ScriptableObject
 {
     public Dictionary<int, Tile_Template> tiles;
     public List<Tile_Template> tiles_list;
+    public Tile_Set_Save save;
     public Tile_Set() { tiles = new Dictionary<int, Tile_Template>(); }
     public Tile_Set(List<Tile_Template> t) {
         tiles = new Dictionary<int, Tile_Template>();
@@ -30,6 +31,14 @@ public class Tile_Set : ScriptableObject
             tiles[tss.i] = tss.tt;
         }
         Update_List();
+    }
+    public Tile_Set(Tile_Set_Save s) {
+        tiles = new Dictionary<int, Tile_Template>();
+        foreach (Tile_Set_Struct tss in s.tiles) {
+            tiles[tss.i] = tss.tt;
+        }
+        Update_List();
+        save = s;
     }
     public Tile_Template Get_Tile(int n) { return tiles[n]; }
     public void Save(string s) {

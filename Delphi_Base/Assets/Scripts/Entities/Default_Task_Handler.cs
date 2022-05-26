@@ -17,12 +17,12 @@ public static class Default_Task_Handler {
         return 1;
     }
     public static List<Task_Starter> Get_Starters() {
-        List<Task_Starter> starters;
+        List<Task_Starter> starters = new List<Task_Starter>();
         starters.Add(Move_Starter);
         return starters;
     }
     public static List<Task_Completer> Get_Completers() {
-        List<Task_Completer> completers;
+        List<Task_Completer> completers = new List<Task_Completer>();
         completers.Add(Move_Completer);
         return completers;
     }

@@ -12,7 +12,7 @@ public class Map_Manager : MonoBehaviour
     
     public void Initialise(Tile_Map_Data tmd) { 
         tile_map = new Tile_Map(tmd);
-        tile_set = tmd.tiles;
+        tile_set = tile_map.tiles;
     }
 
     public Vector3Int World_To_Cell_Pos(Vector3 p) {
