@@ -186,7 +186,9 @@ public class Tile_Map
         }
     }
     public Tile_Map_Data Save_Data() {
-        return new Tile_Map_Data(dim, Deconstruct_Dimensions(map, dim), tiles.save, default_tile, special_connections);
+        Tile_Map_Data save = ScriptableObject.CreateInstance<Tile_Map_Data>();
+        save.Set_Data(dim, Deconstruct_Dimensions(map, dim), tiles.save, default_tile, special_connections);
+        return save;
     }
 }
 
@@ -198,7 +200,7 @@ public struct Tile_Connection
 }
 
 [System.Serializable]
-public class Tile_Map_Data
+public class Tile_Map_Data : ScriptableObject
 {
     public int dimx;
     public int dimy;
@@ -207,7 +209,7 @@ public class Tile_Map_Data
     public Tile_Set_Save tiles;
     public List<Tile_Connection_Save> special_connections;
     public int default_tile;
-    public Tile_Map_Data(Vector3Int d, int[] m, Tile_Set_Save t, int dt, Tile_Connection_Graph sc) {
+    public void Set_Data(Vector3Int d, int[] m, Tile_Set_Save t, int dt, Tile_Connection_Graph sc) {
         dimx = d.x;
         dimy = d.y;
         dimz = d.z;
