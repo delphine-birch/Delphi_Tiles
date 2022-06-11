@@ -8,4 +8,5 @@ public class DT_Entity_Type : MonoBehaviour {
     public AnimatorController animator;
     public Mesh mesh;
     public Materials[] materials;
+    public int[] parameter_mask //0: Static, 1: Ticks since last Tick, 2: Ticks since last Turn
 }

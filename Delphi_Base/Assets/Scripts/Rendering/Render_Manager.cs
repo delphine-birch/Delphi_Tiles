@@ -5,8 +5,20 @@ using UnityEngine;
 public class Render_Manager : MonoBehaviour
 {
     public Dictionary<Vector3Int, Tile_Renderer> tile_renderers;
+    public List<Entity_Renderer> entity_renderers;
     public void Initialise(Delphi_Tiles dt) {
         Generate_Map_Renderers(dt.map.origin, new Vector3(dt.map.scale, dt.map.scale, dt.map.scale), dt.map.tile_map);
+    }
+
+    public void Tick_Update(float tick1, float tick2) {
+        foreach(Entity_Renderer er in entity_renderers) {
+            AnimatorControllerParameter[] parameters = er.animator.parameters;
+            for (int i = 0; i < er.an.parameterCount; i++) {
+                int m = er.parameter_mask[i];
+                if (m == 1) { er.an.SetFloat(parameters[i].name, tick1); }
+                else if (m == 2) { er.an.SetFloat(parameters[i].name, tick2); }
+            }
+        }
     }
     
     public void Generate_Map_Renderers(Vector3 origin, Vector3 scale, Tile_Map tile_map) {
@@ -34,6 +46,7 @@ public class Render_Manager : MonoBehaviour
         go.AddComponent(typeof(Animator));
         Entity_Renderer er = go.AddComponent(typeof(Entity_Renderer)) as Entity_Renderer;
         er.Initialise(dte, dte.entity_template);
+        entity_renderers.Add(er);
         return er;
     }
 }

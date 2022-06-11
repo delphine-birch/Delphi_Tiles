@@ -13,6 +13,7 @@ public class Entity_Renderer : MonoBehaviour
     Mesh mesh;
     Materials materials;
     AnimatorController animator;
+    public int[] parameter_mask;
 
     MeshFilter mf;
     MeshRenderer mr;
