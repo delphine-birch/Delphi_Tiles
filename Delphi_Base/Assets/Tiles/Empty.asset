@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd8744e10a1cd04ebbda54f143ebf58, type: 3}
   m_Name: Empty
   m_EditorClassIdentifier: 
-  mesh: {fileID: 0}
-  euler_rotation: {x: 0, y: 0, z: 0}
-  materials: []
+  mesh: {fileID: 85613298687905860, guid: 32decb7242a4ac94998278d1de6e573b, type: 3}
+  euler_rotation: {x: 270, y: 0, z: 0}
+  materials:
+  - {fileID: 2100000, guid: 68ebd144db948a446aaefb98e6aef02d, type: 2}
   access:
   - -1
   - -1
