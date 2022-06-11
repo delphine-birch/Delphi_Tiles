@@ -25,4 +25,15 @@ public class Render_Manager : MonoBehaviour
             }
         }
     }
+
+    public Entity_Renderer Generate_Entity_Renderer(DT_Entity dte) {
+        GameObject go = new GameObject("Entity Renderer: " + dte.name);
+        go.transform.parent = transform;
+        go.AddComponent(typeof(MeshFilter));
+        go.AddComponent(typeof(MeshRenderer));
+        go.AddComponent(typeof(Animator));
+        Entity_Renderer er = go.AddComponent(typeof(Entity_Renderer)) as Entity_Renderer;
+        er.Initialise(dte, dte.entity_template);
+        return er;
+    }
 }

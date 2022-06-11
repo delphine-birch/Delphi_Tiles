@@ -7,6 +7,8 @@ public class Entity_Manager : MonoBehaviour
 {
     public List<DT_Entity> entities;
     public List<DT_Object> objects;
+    public Dictionary<string, DT_Entity_Type>() entity_types;
+    string type_address;
 
     public Entity_Task_Manager task_manager;
     
@@ -17,6 +19,11 @@ public class Entity_Manager : MonoBehaviour
       task_manager.Initialise(starters, completers);
       foreach (DT_Entity_Save dtes in data.entities) { entities.Add(new DT_Entity(dtes, dt)); }
       foreach (DT_Object_Save dtos in data.objects) { objects.Add(new DT_Object(dtos, dt)); }
+      entity_types = new Dictionary<string, DT_Entity_Type>();
+      List<DT_Entity_Type> types = File_Manager.Load_Entity_Types();
+      foreach (DT_Entity_Type dtet in types) {
+        entity_types[dtet.type_name] = dtet;
+      }
     }
 
     public List<Vector3Int> Get_Obstructed() {
@@ -55,4 +62,5 @@ public struct Initial_Entity_Data : ScriptableObject
 {
   public List<DT_Entity_Save> entities;
   public List<DT_Object_Save> objects;
+  string type_address;
 }
