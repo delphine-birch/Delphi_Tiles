@@ -9,6 +9,8 @@ public class Tile_Template : ScriptableObject
 {
     public Mesh mesh;
     public Vector3 euler_rotation;
+    public Vector3 scale = Vector3.one;
+    public float height_offset = 0;
     int n_submeshes;
     public Material[] materials;
     [SerializeField]
@@ -107,6 +109,8 @@ public class Tile_Template : ScriptableObject
             new_access = rotate3x3(new_access);
         }
         t.access = new_access;
+        t.scale = scale;
+        t.height_offset = height_offset;
         return t;
     }
 

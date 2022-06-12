@@ -4,10 +4,10 @@ using UnityEngine;
 
 //North is +Z, East is +X, Up is +Y
 
-public class Tile_Map
+public class Tile_Map : ScriptableObject
 {
     public Vector3Int dim;
-    int[,,] map;
+    public int[,,] map;
     public Tile_Set tiles;
     Tile_Connection_Graph graph;
     int default_tile = 0;
@@ -112,7 +112,7 @@ public class Tile_Map
         return Get_Tile(v).open;
     }
 
-    void Set_Tile(Vector3Int v, int t) {
+    public void Set_Tile(Vector3Int v, int t) {
         try { map[v.x, v.y, v.z] = t; }
         catch (System.IndexOutOfRangeException ex) { Debug.Log("COORDINATE ERROR: Trying to set tile outside of map range.\n" + ex.Message); }
     }
@@ -197,27 +197,6 @@ public struct Tile_Connection
 {
     public Vector3Int coords;
     public float weight;
-}
-
-[System.Serializable]
-public class Tile_Map_Data : ScriptableObject
-{
-    public int dimx;
-    public int dimy;
-    public int dimz;
-    public int[] map;
-    public Tile_Set_Save tiles;
-    public List<Tile_Connection_Save> special_connections;
-    public int default_tile;
-    public void Set_Data(Vector3Int d, int[] m, Tile_Set_Save t, int dt, Tile_Connection_Graph sc) {
-        dimx = d.x;
-        dimy = d.y;
-        dimz = d.z;
-        map = m;
-        tiles = t;
-        default_tile = dt;
-        special_connections = sc.Save();
-    }
 }
 
 public struct Tile_Instance_Data

@@ -11,7 +11,7 @@ public class Creature {
     public int range;
 
     public Creature(Creature_Type ct, int ID, string n, Vector3Int pos, Delphi_Tiles dt) {
-        dte = new DT_Entity(dtet, ID, n, pos, dt);
+        dte = new DT_Entity(ct.dtet, ID, n, pos, dt);
         creature_type = ct;
         hp = ct.hp;
         dp = ct.dp;
@@ -22,10 +22,10 @@ public class Creature {
     public Creature(DT_Entity d, Dictionary<string, Creature_Type> types) {
         dte = d;
         creature_type = types[d.entity_template.type_key];
-        hp = ct.hp;
-        dp = ct.dp;
-        initiative = ct.initiative;
-        range = ct.range;
+        hp = creature_type.hp;
+        dp = creature_type.dp;
+        initiative = creature_type.initiative;
+        range = creature_type.range;
     }
 
     public int CompareTo(Creature c) {
@@ -52,6 +52,16 @@ public class Creature_Type {
         type_key = d.type_key;
     }
 
+    public Creature_Type(Creature_Type_Save save, Dictionary<string, DT_Entity_Type> types) {
+        hp = save.hp;
+        dp = save.dp;
+        initiative = save.initiative;
+        range = save.range;
+        type_name = save.type_name;
+        type_key = save.type_key;
+        dtet = types[type_key];
+    }
+
     public Creature_Type_Save Save() {
         Creature_Type_Save save = ScriptableObject.CreateInstance<Creature_Type_Save>();
         save.type_name = type_name;
@@ -60,14 +70,15 @@ public class Creature_Type {
         save.dp = dp;
         save.initiative = initiative;
         save.range = range;
+        return save;
     }
 }
 
 public class Creature_Type_Save : ScriptableObject {
-    string type_name;
-    string type_key;
-    int hp;
-    int dp;
-    int initiative;
-    int range;
+    public string type_name;
+    public string type_key;
+    public int hp;
+    public int dp;
+    public int initiative;
+    public int range;
 }

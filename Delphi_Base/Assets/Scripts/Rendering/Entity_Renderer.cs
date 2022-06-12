@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -11,13 +12,13 @@ public class Entity_Renderer : MonoBehaviour
     public Vector3Int target;
     public bool moving;
     Mesh mesh;
-    Materials materials;
-    AnimatorController animator;
+    Material[] materials;
+    public RuntimeAnimatorController animator;
     public int[] parameter_mask;
 
     MeshFilter mf;
     MeshRenderer mr;
-    Animator an;
+    public Animator an;
 
     public void Initialise(DT_Entity dte, DT_Entity_Type dtet) {
         cell_pos = dte.cell_pos;

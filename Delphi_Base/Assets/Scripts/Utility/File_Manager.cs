@@ -33,7 +33,7 @@ public static class File_Manager
         Object[] obj = Resources.LoadAll("Entity_Types", typeof(GameObject));
         List<DT_Entity_Type> ret = new List<DT_Entity_Type>();
         foreach (Object o in obj) {
-            ret.Add(Instantiate((GameObject)o).GetComponent<DT_Entity_Type>());
+            ret.Add(GameObject.Instantiate((GameObject)o).GetComponent<DT_Entity_Type>());
         }
         return ret;
     }

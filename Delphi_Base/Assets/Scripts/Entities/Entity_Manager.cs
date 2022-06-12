@@ -7,7 +7,7 @@ public class Entity_Manager : MonoBehaviour
 {
     public List<DT_Entity> entities;
     public List<DT_Object> objects;
-    public Dictionary<string, DT_Entity_Type>() entity_types;
+    public Dictionary<string, DT_Entity_Type> entity_types;
     string type_address;
 
     public Entity_Task_Manager task_manager;
@@ -36,7 +36,7 @@ public class Entity_Manager : MonoBehaviour
     public Initial_Entity_Data Save_Entity_Data() {
       Initial_Entity_Data save = ScriptableObject.CreateInstance<Initial_Entity_Data>();
       save.entities = new List<DT_Entity_Save>();
-      save.object = new List<DT_Object_Save>();
+      save.objects = new List<DT_Object_Save>();
       foreach (DT_Entity e in entities) { save.entities.Add(e.Save()); }
       foreach (DT_Object o in objects) { save.objects.Add(o.Save()); }
       return save;
@@ -44,21 +44,22 @@ public class Entity_Manager : MonoBehaviour
 
     public DT_Entity Get_Entity_By_Name(string name) {
       foreach(DT_Entity e in entities) {
-        if (e.name == name) { return e; }
+        if (e.entity_name == name) { return e; }
       }
+      return entities[0];
     }
 
     public List<DT_Entity> Get_Entities_By_Type(string type) {
       List<DT_Entity> ret = new List<DT_Entity>();
       foreach (DT_Entity e in entities) {
-        if (e.type == type) { ret.Add(e); }
+        if (e.entity_type == type) { ret.Add(e); }
       }
       return ret;
     }
 }
 
 [System.Serializable]
-public struct Initial_Entity_Data : ScriptableObject
+public class Initial_Entity_Data : ScriptableObject
 {
   public List<DT_Entity_Save> entities;
   public List<DT_Object_Save> objects;

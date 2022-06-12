@@ -30,18 +30,18 @@ public class Game_Manager : MonoBehaviour {
 
         Object[] obj = Resources.LoadAll("Creature_Types", typeof(Creature_Type_Save));
         foreach(Object o in obj) {
-            Creature_Type ct = (Creature_Type)o;
-            creature_types[ct.type_key] = ct;
+            Creature_Type_Save ct = (Creature_Type_Save) o;
+            creature_types[ct.type_key] = new Creature_Type(ct, dt.entities.entity_types);
         }
 
         foreach(DT_Entity dte in dt.entities.entities) {
-            Creature c = new Creature(dte);
+            Creature c = new Creature(dte, creature_types);
             creatures.Add(c);
         }
         creatures.Sort();
 
         active_index = creatures.Count - 1;
-        active = creatures[active];
+        active = creatures[active_index];
     }
 
     public void Next_Turn() {
@@ -60,11 +60,11 @@ public class Game_Manager : MonoBehaviour {
 
     public void Update() {
         if (active_turn) {
-            dt.render.Tick_Update(ticks_per_second*(Time.time - active_tick_start), ticks_per_second*(Time.time - active_turn_start))
+            dt.render.Tick_Update(ticks_per_second*(Time.time - active_tick_start), ticks_per_second*(Time.time - active_turn_start));
             if ((Time.time - active_tick_start)*ticks_per_second > 1) {
                 active_tick_start = Time.time;
                 dt.entities.task_manager.Tick_End(new List<DT_Entity> { active.dte }, dt);
-                if (dt.task_queue.Count < 1) {
+                if (active.dte.task_queue.Count < 1) {
                     active_index--;
                     if (active_index < 0) { active_index = creatures.Count - 1; }
                     active = creatures[active_index];

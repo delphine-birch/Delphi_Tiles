@@ -12,7 +12,7 @@ public class Render_Manager : MonoBehaviour
 
     public void Tick_Update(float tick1, float tick2) {
         foreach(Entity_Renderer er in entity_renderers) {
-            AnimatorControllerParameter[] parameters = er.animator.parameters;
+            AnimatorControllerParameter[] parameters = er.an.parameters;
             for (int i = 0; i < er.an.parameterCount; i++) {
                 int m = er.parameter_mask[i];
                 if (m == 1) { er.an.SetFloat(parameters[i].name, tick1); }
@@ -39,7 +39,7 @@ public class Render_Manager : MonoBehaviour
     }
 
     public Entity_Renderer Generate_Entity_Renderer(DT_Entity dte) {
-        GameObject go = new GameObject("Entity Renderer: " + dte.name);
+        GameObject go = new GameObject("Entity Renderer: " + dte.entity_name);
         go.transform.parent = transform;
         go.AddComponent(typeof(MeshFilter));
         go.AddComponent(typeof(MeshRenderer));

@@ -13,7 +13,7 @@ using UnityEditor;
 //15, 16, 17, 18 Default Door NESW (Exit on North)
 
 [System.Serializable]
-public class Tile_Set
+public class Tile_Set : ScriptableObject
 {
     public Dictionary<int, Tile_Template> tiles;
     public List<Tile_Template> tiles_list;

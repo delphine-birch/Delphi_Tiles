@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd8744e10a1cd04ebbda54f143ebf58, type: 3}
+  m_Name: Sand_Corner_r270
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 7870378966267781162, guid: ba4353e0dc2b20a488b9f57d12615b69, type: 3}
+  euler_rotation: {x: 270, y: 270, z: 0}
+  scale: {x: 50, y: 50, z: 50}
+  height_offset: 0
+  materials:
+  - {fileID: 2100000, guid: c64bf91ce14db2646abd812da88d5492, type: 2}
+  access:
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  open: 1

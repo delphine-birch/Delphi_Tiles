@@ -26,7 +26,7 @@ public class Tile_Renderer : MonoBehaviour
         mf.mesh = tile.mesh;
         mr.materials = tile.materials;
         transform.position = pos;
-        transform.localScale = scale;
+        transform.localScale = new Vector3(scale.x*t.scale.x, scale.y*t.scale.y, scale.z*t.scale.z);
         transform.rotation = Quaternion.Euler(tile.euler_rotation);
     }
 

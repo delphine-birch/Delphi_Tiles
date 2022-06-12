@@ -7,7 +7,7 @@ public class Entity_Task_Manager : MonoBehaviour {
     public List<Task_Starter> starters;
     public List<Task_Completer> completers;
 
-    void Initialise(List<Task_Starter> s, List<Task_Completer> c) {
+    public void Initialise(List<Task_Starter> s, List<Task_Completer> c) {
         starters = s;
         completers = c;
     }

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82080ccb82e8084383d29f227fb11d2, type: 3}
+  m_Name: Basic_Sand
+  m_EditorClassIdentifier: 
+  tiles:
+  - tt: {fileID: 11400000, guid: dc012976b913fb84eae7402fc43b398e, type: 2}
+    i: 0
+  - tt: {fileID: 11400000, guid: 059e71f4797b3a043b9d91b1a50e1fa1, type: 2}
+    i: 1
+  - tt: {fileID: 11400000, guid: 6d2e51642fc0cb842a828c7bc2eca2e2, type: 2}
+    i: 2
+  - tt: {fileID: 11400000, guid: c5acfecc2aa52a845a38cb750f98ff68, type: 2}
+    i: 3
+  - tt: {fileID: 11400000, guid: 710e0625def76b8449c6b5a33a5d4344, type: 2}
+    i: 4
+  - tt: {fileID: 11400000, guid: 2c4890c361bb1c84da3754fb0f4bb06e, type: 2}
+    i: 5
+  - tt: {fileID: 11400000, guid: 604ae8e85a987df44a1168fb01969691, type: 2}
+    i: 6
+  - tt: {fileID: 11400000, guid: 6206371cb4fa1b241a8fd52553bc399b, type: 2}
+    i: 7
+  - tt: {fileID: 11400000, guid: b87ef95a92628e34098b3fe2b43486d7, type: 2}
+    i: 8
+  - tt: {fileID: 11400000, guid: 9ec379727d4a828429d9239f887f8959, type: 2}
+    i: 9
+  - tt: {fileID: 11400000, guid: 392ad579e1f611a4faaa48469653d018, type: 2}
+    i: 10
+  - tt: {fileID: 11400000, guid: ddd207f6133e2aa4c9acc4f729a4f504, type: 2}
+    i: 11
+  - tt: {fileID: 11400000, guid: 6578fafccbaff4c4dabe80c58d493160, type: 2}
+    i: 12
+  - tt: {fileID: 11400000, guid: af8485cb5e49ff543a9851992f442eed, type: 2}
+    i: 13
+  - tt: {fileID: 11400000, guid: d00155bd84f864841bf696fb37226c3a, type: 2}
+    i: 14
+  - tt: {fileID: 11400000, guid: 54c670d26b3007c49a211f9d8abca418, type: 2}
+    i: 15
+  - tt: {fileID: 11400000, guid: cbfb9665c36479c4b857339467fa6043, type: 2}
+    i: 16
+  - tt: {fileID: 11400000, guid: 3f8c57e29f32e7648be146cfa32c8e74, type: 2}
+    i: 17
+  - tt: {fileID: 11400000, guid: 2931b9a33a7d3a64daea2d3ebba66bb6, type: 2}
+    i: 18
+  - tt: {fileID: 11400000, guid: b3471e0dbe544f247bd602b4fb2341f9, type: 2}
+    i: 19
+  - tt: {fileID: 11400000, guid: 85859baad4ecf214e94e015ad212d6df, type: 2}
+    i: 20
